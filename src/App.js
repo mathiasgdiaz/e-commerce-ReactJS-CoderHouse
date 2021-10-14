@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p className="ptest" class="p6 items-center justify-center">
           Primer commit Proyecto Curso ReactJS 
         </p>
         <span><strong>Coder House</strong></span>
