@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, ShoppingCartIcon } from '@heroicons/react/outline'
+import CartWidget from './CartWidget.jsx';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,16 +38,7 @@ export default function NavBar() {
                 )}
               </button>
             </div>
-            <div className="hidden md:flex absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <button type="button" className="p-1 text-gray-400 hover:text-gray-700 focus:outline-none">
-                <span className="sr-only">View notifications</span>
-                <BellIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
-              <button type="button" className="ml-5 p-1 text-gray-400 hover:text-gray-700 focus:outline-none">
-                 <span className="sr-only">View notifications</span>
-                 <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
-            </div>
+            <CartWidget />
           </div>
         </div>
 
