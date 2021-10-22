@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import CartWidget from './CartWidget.jsx';
+import CartWidget from './CartWidget/CartWidget.jsx';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
