@@ -10,7 +10,7 @@ La versión actual cuenta con:
 - vista de detalles: vista con todos los detalles del producto
 ​
 ## Instalación
-​
+
 1. Forkeá y cloná el repositorio
 ​
 
@@ -19,7 +19,6 @@ La versión actual cuenta con:
    ```
    npm install
    ```
-​
 
 3. Para instalar todas las dependecias del proyecto usá 
 ​
@@ -27,7 +26,7 @@ La versión actual cuenta con:
    npm start
    ```
 ​
-para correr el proyecto, que estará disponible en http://localhost:3000
+el proyecto estará disponible en http://localhost:3000
 ​
 ​
 ​
