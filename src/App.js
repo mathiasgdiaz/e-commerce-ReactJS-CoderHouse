@@ -1,21 +1,27 @@
+import React from 'react';
 import './App.css';
 import './styles/output.css'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar.jsx';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer.jsx';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer.jsx';
 
 function App() {
   return(
-    <div>
+    <BrowserRouter>
       <NavBar />
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-xl font-bold text-gray-900">OBJETOS ÚTILES Y BOLUCOMPRAS</h1>
-        </div>
-      </header>
-      <main>
-        <ItemListContainer mensaje="Próximamente las ofertas de la semana"/>
-      </main>
-    </div>
+      <Switch>
+        <Route exact path="/">
+          <ItemListContainer title="Objetos Útiles Y Bolucompras"/>
+        </Route>
+        <Route exact path="/category/:categoryId">
+          <ItemListContainer/>
+        </Route>
+        <Route exact path="/item/:itemId">
+          <ItemDetailContainer/>
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
