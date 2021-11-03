@@ -1,6 +1,6 @@
 # La Tiendita
 ​
-La Tiendita es un e-commerce para la venta de accesorios, objetos y gadgets útiles y bolucompras
+La Tiendita es un e-commerce para la venta de accesorios, objetos, gadgets útiles y bolucompras
 ​
 
 La versión actual cuenta con:
