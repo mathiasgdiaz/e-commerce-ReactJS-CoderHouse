@@ -2,6 +2,7 @@
 ​
 La Tiendita es un e-commerce para la venta de accesorios, objetos y gadgets útiles y bolucompras
 ​
+
 La versión actual cuenta con:
 ​
 - menú de categorías
@@ -12,19 +13,22 @@ La versión actual cuenta con:
 ​
 1. Forkeá y cloná el repositorio
 ​
+
 2. Parado en la raíz del proyecto corré el comando 
 ​
    ```
    npm install
    ```
 ​
-   3. Para instalar todas las dependecias del proyecto usá 
+
+3. Para instalar todas las dependecias del proyecto usá 
 ​
    ```
    npm start
    ```
 ​
-    para correr el proyecto, que estará disponible en http://localhost:3000
+para correr el proyecto, que estará disponible en http://localhost:3000
+​
 ​
 ​
 ​
@@ -45,4 +49,5 @@ Uso de React Router Dom para la navegación
 ​
 Mathias Gabriel Diaz Ogás
 ​
- 2021 - Curso de React en CoderHouse
+
+2021 - Curso de React en CoderHouse
