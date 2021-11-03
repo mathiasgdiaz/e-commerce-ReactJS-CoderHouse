@@ -42,7 +42,7 @@ Uso de React Router Dom para la navegación
 ​
 Podés visitar: 
 ​
-![La Tiendita en funcionamiento]()(https://user-images.githubusercontent.com/11366256/140181978-fbda0c3b-f560-48f2-8e5d-cdcc8d9bfe0f.gif)
+![La Tiendita en funcionamiento](https://user-images.githubusercontent.com/11366256/140181978-fbda0c3b-f560-48f2-8e5d-cdcc8d9bfe0f.gif)
 
 ​
 ### Autor
