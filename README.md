@@ -18,9 +18,7 @@ La versión actual cuenta con:
    npm install
    ```
 ​
-    para instalar todas las dependecias del proyecto
-​
-3. Usá 
+3. Para instalar todas las dependecias del proyecto usá 
 ​
    ```
    npm start
@@ -47,4 +45,4 @@ Uso de React Router Dom para la navegación
 ​
 Mathias Gabriel Diaz Ogás
 ​
- - 2021 - Curso de React en CoderHouse
+2021 - Curso de React en CoderHouse
