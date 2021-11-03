@@ -1,6 +1,3 @@
-# e-commerce-ReactJS-CoderHouse
-Proyecto de e-commerce "La Tiendita" para curso de ReactJS de Coder House
-
 # La Tiendita
 ​
 La Tiendita es un e-commerce para la venta de accesorios, objetos y gadgets útiles y bolucompras
@@ -45,7 +42,8 @@ Uso de React Router Dom para la navegación
 ​
 Podés visitar: 
 ​
-![La Tiendita en funcionamiento]()
+![La Tiendita en funcionamiento]()(https://user-images.githubusercontent.com/11366256/140181978-fbda0c3b-f560-48f2-8e5d-cdcc8d9bfe0f.gif)
+
 ​
 ### Autor
 ​
