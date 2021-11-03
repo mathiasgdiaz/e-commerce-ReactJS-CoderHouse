@@ -32,19 +32,18 @@ el proyecto estará disponible en http://localhost:3000
 ​
 ​
 ## Dependencias
+
+- Uso de Taildwind para dar formato a la aplicación.
 ​
-Uso de Taildwind para dar formato a la aplicación.
-​
-Uso de React Router Dom para la navegación
+- Uso de React Router Dom para la navegación
 ​
 ​
 ​
 ## Aplicación en funcionamiento
 ​
 ![La Tiendita en funcionamiento](https://user-images.githubusercontent.com/11366256/140181978-fbda0c3b-f560-48f2-8e5d-cdcc8d9bfe0f.gif)
-
 ​
-### Autor
+## Autor
 ​
 Mathias Gabriel Diaz Ogás
 ​
