@@ -13,7 +13,7 @@ const Item = ({product}) => {
                     <h2 class="mt-2 mb-2  font-bold">{product.name}</h2>
                     <p class="text-sm">{product.desc}</p>
                     <div class="mt-3 flex items-center">
-                        <span class="font-bold text-xl">{product.price}</span>
+                        <span class="font-bold text-xl">$ {product.price}</span>
                     </div>
                 </div>
                 <div class="p-4 border-t border-b text-xs text-gray-700">
