@@ -37,6 +37,7 @@ el proyecto estará disponible en http://localhost:3000
 ​
 - Uso de React Router Dom para la navegación
 ​
+- Uso de Context para control del carrito de compras
 ​
 ​
 ## Aplicación en funcionamiento
