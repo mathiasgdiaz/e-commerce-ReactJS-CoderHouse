@@ -39,6 +39,8 @@ el proyecto estará disponible en http://localhost:3000
 ​
 - Uso de Context para control del carrito de compras
 ​
+- Uso de Firebase para obtener los productos desde el storage del servicio
+​
 ​
 ## Aplicación en funcionamiento
 ​
