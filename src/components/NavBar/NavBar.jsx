@@ -4,7 +4,7 @@ import { Transition } from "@headlessui/react";
 import CartWidget from './CartWidget/CartWidget.jsx';
 import categories from '../../data/categories.js'
 
-export const NavBar = () => {
+export const NavBar = ({setCartOpen}) => {
   const [isOpen, setIsOpen] = useState(false);
   return (    
       <nav className="bg-gray-200">
@@ -45,7 +45,7 @@ export const NavBar = () => {
                 )}
               </button>
             </div>
-            <CartWidget />
+            <CartWidget setCartOpen={setCartOpen}/>
           </div>
         </div>
 

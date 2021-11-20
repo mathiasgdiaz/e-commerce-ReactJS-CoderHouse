@@ -9,10 +9,11 @@ import {CartFuncion} from './context/CartContext'
 import Cart from './components/Cart/Cart.jsx';
 
 function App() {
+  const [cartOpen, setCartOpen] = React.useState(false);
   return(
     <BrowserRouter>
       <CartFuncion>
-        <NavBar />
+        <NavBar setCartOpen={setCartOpen}/>
         <Switch>
           <Route exact path="/">
             <ItemListContainer title="Objetos Útiles Y Bolucompras"/>
@@ -21,9 +22,11 @@ function App() {
             <ItemListContainer/>
           </Route>
           <Route exact path="/item/:itemId">
-            <ItemDetailContainer/>
+            <ItemDetailContainer setCartOpen={setCartOpen}/>
           </Route>
         </Switch>
+
+        <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
       </CartFuncion>
     </BrowserRouter>
   );

@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {useParams, useHistory} from 'react-router-dom';
-import { NavLink, Link } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ItemDetail from './ItemDetail/ItemDetail.jsx'
-import data from '../../data/data.js'
 import categories from '../../data/categories.js'
 
-const ItemDetailContainer = () => {
+import db from '../../data/firebase.js';
+import { doc, getDoc } from 'firebase/firestore';
+
+const ItemDetailContainer = ({setCartOpen}) => {
     const [item, setItem] = useState([]);
     const [category, setCategory] = useState('');
     const [load, setLoad] = useState(true);
@@ -13,22 +15,18 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         setLoad(true);
-        const getItem = new Promise((res)=>
-        {
-        setTimeout(()=>{
-            res(data);
-        },1000);
-        });
-        getItem.then((data) => {
-            setItem(data.filter((i) => i.id === itemId))
-            setCategory(data.filter((i) => i.id === itemId)[0].category);
-        }).finally(() => setLoad(false));
-    },[itemId]);
+        const getItem = doc(db, 'items', itemId);
+        getDoc(getItem)
+          .then((res) => {
+            const result = { id: res.id, ...res.data() };
+            setItem(result);
+            setCategory(result.category);
+          })
+          .finally(() => {
+            setLoad(false);
+          });
+      }, [itemId]);
 
-    const itemDetail = item.map((item) =>
-        <ItemDetail key={item.id} item={item}/>
-    )
-    
     return(
         <main>            
             {load 
@@ -44,13 +42,13 @@ const ItemDetailContainer = () => {
                             </NavLink>
                             <span className="pl-2 pr-2 text-xl"> / </span>
                             <NavLink to={"/category/" + category} exact>
-                                <h1 className="text-xl font-bold text-gray-900">{categories.filter((i) => i.category === category)[0].text}</h1>
+                                <h1 className="text-xl font-bold text-gray-900">{categories.filter(i => i.category == category)[0].text}</h1>
                             </NavLink>
                         </div>
                     </header>
                     <section class="text-gray-700 body-font overflow-hidden bg-white mt-5">
                         <div class="container px-5 py-10 mx-auto">
-                            {itemDetail}
+                        <ItemDetail key={item.id} item={item} setCartOpen={setCartOpen}/>
                         </div>
                     </section>
                 </div>

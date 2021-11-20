@@ -1,15 +1,14 @@
-import React, {Fragment, useState, useContext} from "react";
+import React, {Fragment, useContext} from "react";
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { Context } from "../../context/CartContext";
 
-const Cart = (props) => {
-  const [open, setOpen] = useState((props.open == "true") ? true : false)
-  const {cart, total, onRemove, onClear} = useContext(Context)
+const Cart = ({cartOpen, setCartOpen}) => {
+  const {cart, unidades, total, onRemove, onClear} = useContext(Context)
 
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={setOpen}>
+    <Transition.Root show={cartOpen} as={Fragment}>
+      <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={() => setCartOpen(false)}>
         <div className="absolute inset-0 overflow-hidden">
           <Transition.Child
             as={Fragment}
@@ -42,7 +41,7 @@ const Cart = (props) => {
                         <button
                           type="button"
                           className="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                          onClick={() => setOpen(false)}
+                          onClick={() => setCartOpen(false)}
                         >
                           <span className="sr-only">Close panel</span>
                           <XIcon className="h-6 w-6" aria-hidden="true" />
@@ -52,6 +51,7 @@ const Cart = (props) => {
 
                     <div className="mt-8">
                       <div className="flow-root">
+                        {unidades == 0 ? <h2 class="text-s title-font text-gray-500 tracking-widest text-center">No tiene productos en el carrito</h2> : ''}
                         <ul role="list" className="-my-6 divide-y divide-gray-200">
                           {cart.map((item)=> (
                             <li key={item.id} className="py-6 flex">
@@ -108,7 +108,7 @@ const Cart = (props) => {
                             Vaciar carrito
                         </button>
                         {' '} o {' '}
-                        <button type="button" className="text-indigo-600 font-medium hover:text-indigo-500" onClick={() => setOpen(false)}>
+                        <button type="button" className="text-indigo-600 font-medium hover:text-indigo-500" onClick={() => setCartOpen(false)}>
                             Continuar comprando<span aria-hidden="true"> &rarr;</span>
                         </button>
                       </p>

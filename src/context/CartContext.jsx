@@ -23,7 +23,7 @@ const CartFuncion = ({children}) =>{
                 ]
             )
             setTotal(total+(parseFloat(product.price)*cant))
-            setUnidades(unidades+1)
+            setUnidades(unidades+cant)
         } else {
             const cartAux=cart.map((item)=>{
                 if(item.id===product.id){
@@ -40,14 +40,16 @@ const CartFuncion = ({children}) =>{
     const onRemove = (id) => {
         const newCart = cart.filter((item) => item.id !== id)
         const delItem = cart.filter((item) => item.id === id)
-        setCart(newCart);
+        setUnidades(unidades-delItem[0].cant)
+        setCart(newCart)
         setTotal(total-(delItem[0].subtotal))
     }
 
     const onClear = () => {
-        setCart([]);
-        setUnidades(0);
-        setTotal(0);
+        setUnidades(0)
+        setCart([])
+        setUnidades(0)
+        setTotal(0)
     }
 
     
