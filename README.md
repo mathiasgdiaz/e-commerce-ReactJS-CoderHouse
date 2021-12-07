@@ -8,6 +8,8 @@ La versión actual cuenta con:
 - menú de categorías
 - vistas de listas de productos: vista general de productos con foto y detalles mínimos
 - vista de detalles: vista con todos los detalles del producto
+- carrito de compras: puedes añadir productos al carrito y navegar con el acceso al mismo siempre presente en el menú
+- checkout de confirmación: añade una orden de compra y en caso de ser correcta la confima y devuelve el número de identificación
 ​
 ## Instalación
 
@@ -39,7 +41,7 @@ el proyecto estará disponible en http://localhost:3000
 ​
 - Uso de Context para control del carrito de compras
 ​
-- Uso de Firebase para obtener los productos desde el storage del servicio
+- Uso de Firebase para obtener los productos y categorias desde el storage del servicio y para agregar órdenes de compra generadas desde el sitio
 ​
 ​
 ## Aplicación en funcionamiento
