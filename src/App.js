@@ -5,9 +5,8 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar.jsx';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer.jsx';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer.jsx';
-import NotFound from './components/NotFound/NotFound.jsx';
 import Checkout from './components/Cart/Checkout.jsx';
-import {CartFuncion} from './context/CartContext'
+import { CartFuncion } from './context/CartContext'
 import { Categories } from "./context/CategoriesContext.jsx"
 import Cart from './components/Cart/Cart.jsx';
 
