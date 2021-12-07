@@ -1,20 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useParams } from 'react-router-dom';
 import ItemList from './ItemList/ItemList.jsx'
-import categories from '../../data/categories.js'
+import NotFound from '../NotFound/NotFound.jsx';
+import { CategoriesContext } from "../../context/CategoriesContext.jsx"
 
 import db from '../../data/firebase.js';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const ItemListContainer = (props) => {
   const [products, setProducts] = useState([]);
+  const {categories} = useContext(CategoriesContext);
   const [load, setLoad] = useState(true);
-  const { categoryId } = useParams();
+  const { categoryKey } = useParams();
 
   useEffect(() => {
-    setLoad(true);
-    const listItems = categoryId
-      ? query(collection(db, 'items'), where('category', '==', parseInt(categoryId)))
+    setLoad(true);    
+
+    const listItems = categoryKey
+      ? query(collection(db, 'items'), where('category', '==', categoryKey))
       : collection(db, 'items');
       
     getDocs(listItems)
@@ -25,23 +28,32 @@ const ItemListContainer = (props) => {
         setProducts(results);
       })
       .finally(() => setLoad(false));
-  }, [categoryId]);
-
+  }, [categoryKey]);
+  console.log(categories);
   return(
     <main>
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-xl font-bold text-gray-900">{props.title ? props.title : categoryId ? categories.filter(i => i.category == categoryId)[0].desc : categories.filter(i => i.category == categoryId)[0].desc}</h1>
-        </div>
-      </header>
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-            {load ? <div class="flex items-center justify-center ">
-                        <div class="w-24 h-24 border-l-2 border-gray-900 rounded-full animate-spin"></div>
-                    </div> 
-                  : <ItemList products={products}/>}
-        </div>
-      </div>
+      {
+        load ? 
+            <div class="flex items-center justify-center ">
+                <div class="w-24 h-24 border-l-2 border-gray-900 rounded-full animate-spin items-center"></div>
+            </div> 
+          : 
+          products.length > 0 ?
+            <div>
+              <header className="bg-white shadow">
+                <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                  <h1 className="text-xl font-bold text-gray-900">{props.title ? props.title : categories.length > 0 && categoryKey != undefined ? categories.filter(i => i.key == categoryKey)[0].desc : ''}</h1>
+                </div>
+              </header>
+              <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <div className="px-4 py-6 sm:px-0">
+                  <ItemList products={products}/>
+                </div>
+              </div>
+            </div>
+          :
+          <NotFound/>
+    }
     </main>
   );
 }

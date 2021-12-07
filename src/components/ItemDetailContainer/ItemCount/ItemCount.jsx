@@ -14,8 +14,6 @@ const ItemCount = ({initStock, addToCart, setCartOpen}) => {
             setStock(stock+1)
         }
     }
-
-    console.log(initStock);
       
     return (
         <div class="flex float-right w-full pl-50">

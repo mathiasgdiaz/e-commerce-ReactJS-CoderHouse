@@ -1,4 +1,5 @@
 import React, {Fragment, useContext} from "react";
+import { NavLink } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { Context } from "../../context/CartContext";
@@ -95,12 +96,9 @@ const Cart = ({cartOpen, setCartOpen}) => {
                     </div>
                     <p className="mt-0.5 text-sm text-gray-500">Envío a calcular en el checkout</p>
                     <div className="mt-6">
-                      <a
-                        href="#"
-                        className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-500 hover:bg-green-500"
-                      >
-                        Checkout
-                      </a>
+                         <NavLink to={"/checkout"} exact onClick={() => setCartOpen(false)} className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-500 hover:bg-green-500">
+                            Checkout
+                         </NavLink>
                     </div>
                     <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
                       <p>

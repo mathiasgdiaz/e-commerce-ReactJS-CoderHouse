@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import ItemDetail from './ItemDetail/ItemDetail.jsx'
-import categories from '../../data/categories.js'
-
+import NotFound from '../NotFound/NotFound.jsx';
+import { CategoriesContext } from "../../context/CategoriesContext.jsx"
 import db from '../../data/firebase.js';
 import { doc, getDoc } from 'firebase/firestore';
 
 const ItemDetailContainer = ({setCartOpen}) => {
     const [item, setItem] = useState([]);
+    const {categories} = useContext(CategoriesContext);
     const [category, setCategory] = useState('');
     const [load, setLoad] = useState(true);
     const { itemId } = useParams();
@@ -25,8 +26,7 @@ const ItemDetailContainer = ({setCartOpen}) => {
           .finally(() => {
             setLoad(false);
           });
-      }, [itemId]);
-
+    }, [itemId]);
     return(
         <main>            
             {load 
@@ -34,6 +34,8 @@ const ItemDetailContainer = ({setCartOpen}) => {
                         <div class="w-24 h-24 border-l-2 border-gray-900 rounded-full animate-spin"></div>
                     </div> 
                 :
+                item.category != undefined
+                ?
                 <div>
                     <header className="bg-white shadow">
                         <div className="flex max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -42,7 +44,7 @@ const ItemDetailContainer = ({setCartOpen}) => {
                             </NavLink>
                             <span className="pl-2 pr-2 text-xl"> / </span>
                             <NavLink to={"/category/" + category} exact>
-                                <h1 className="text-xl font-bold text-gray-900">{categories.filter(i => i.category == category)[0].text}</h1>
+                                <h1 className="text-xl font-bold text-gray-900">{categories.length > 0 && category != undefined ? categories.filter(i => i.key == category)[0].name : ''}</h1>
                             </NavLink>
                         </div>
                     </header>
@@ -52,6 +54,8 @@ const ItemDetailContainer = ({setCartOpen}) => {
                         </div>
                     </section>
                 </div>
+                :
+                <NotFound/>
             }
         </main>
     );

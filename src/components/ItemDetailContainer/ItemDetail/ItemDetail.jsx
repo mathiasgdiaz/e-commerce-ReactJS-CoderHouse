@@ -1,10 +1,11 @@
 import React, {useState, useContext} from 'react'
-import categories from '../../../data/categories.js'
 import ItemCount from '../ItemCount/ItemCount.jsx'
 import { Context } from "../../../context/CartContext"
+import { CategoriesContext } from "../../../context/CategoriesContext.jsx"
 
 const ItemDetail = ({item, setCartOpen}) => {
     const {onAdd} = useContext(Context)
+    const {categories} = useContext(CategoriesContext);
 
     const addToCart = (props)=>{
         if (props.unidades > 0){
@@ -16,7 +17,7 @@ const ItemDetail = ({item, setCartOpen}) => {
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img alt="ecommerce" className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={item.image} />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                <h2 className="text-sm title-font text-gray-500 tracking-widest">{categories.filter(i => i.category == item.category)[0].text}</h2>
+                <h2 className="text-sm title-font text-gray-500 tracking-widest">{categories.filter(i => i.key == item.category).name}</h2>
                 <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{item.name}</h1>
                 <div className="flex mb-4">
                     <span className="flex items-center">

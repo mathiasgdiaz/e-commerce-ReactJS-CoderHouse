@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink, Link } from 'react-router-dom';
 import { Transition } from "@headlessui/react";
+import { CategoriesContext } from "../../context/CategoriesContext.jsx"
 import CartWidget from './CartWidget/CartWidget.jsx';
-import categories from '../../data/categories.js'
 
 export const NavBar = ({setCartOpen}) => {
+  const {categories} = useContext(CategoriesContext)
   const [isOpen, setIsOpen] = useState(false);
+
   return (    
       <nav className="bg-gray-200">
         <div className="max-w-7xl mx-auto pb-3 pt-3 px-4 sm:px-6 lg:px-8">
@@ -13,7 +15,7 @@ export const NavBar = ({setCartOpen}) => {
             <div className="flex items-center">
               <div class="flex items-center flex-shrink-0 text-white mr-6">
                 <NavLink to="/" exact className="flex h-screen justify-center items-center">
-                  <img className="h-14 w-14 float-left" src="/logo_tienda_2.jpg" alt="La Tiendita" />
+                  <img className="h-14 w-14 float-left" src="/logo_tienda.png" alt="La Tiendita" />
                   <span class="font-semibold text-2xl tracking-tight ml-5 text-red-700">La Tiendita</span>
                 </NavLink>
               </div>
@@ -22,8 +24,8 @@ export const NavBar = ({setCartOpen}) => {
                 {
                   categories.map((cat) => {
                     return (
-                        <NavLink to={cat.address} exact activeClassName="text-gray-700" className="text-gray-400 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
-                          {cat.text}
+                        <NavLink to={'/category/'+cat.key} exact activeClassName="text-gray-700" className="text-gray-400 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
+                          {cat.name}
                         </NavLink>
                     );
                   })
@@ -64,8 +66,8 @@ export const NavBar = ({setCartOpen}) => {
               {
                   categories.map((cat) => {
                     return (
-                        <NavLink to={cat.address} exact activeClassName="text-gray-700" className="text-gray-400 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
-                          {cat.text}
+                        <NavLink to={'/category/'+cat.key} exact activeClassName="text-gray-700" className="text-gray-400 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium">
+                          {cat.name}
                         </NavLink>
                     );
                   })
